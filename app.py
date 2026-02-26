@@ -19,7 +19,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-URL_GOOGLE_SHEET = "https://script.google.com/macros/s/IL_TUO_LINK_LUNGHISSIMO/exec"
+URL_GOOGLE_SHEET = "https://script.google.com/macros/s/AKfycbxxj0IzgTt1xLj357gUrryEseh23oV6dsjNazKKZzteB94Rf1S8hLgmSc2_QBhIoCqENQ/exec"
 
 def save_response(data):
     try:
@@ -201,3 +201,4 @@ if st.button("Invia Risposte", type="primary"):
     save_response(response_data)
 
     st.success("La tua risposta è stata registrata con successo. Grazie per la collaborazione.")
+
