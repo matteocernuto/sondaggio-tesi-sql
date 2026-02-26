@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import os
+import requests
 
 st.set_page_config(page_title="Valutazione AI SQL - Sondaggio Tesi", layout="centered")
 
@@ -18,13 +19,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+URL_GOOGLE_SHEET = "https://script.google.com/macros/s/IL_TUO_LINK_LUNGHISSIMO/exec"
+
 def save_response(data):
-    filename = "risposte_sondaggio.csv"
-    df_new = pd.DataFrame([data])
-    if not os.path.exists(filename):
-        df_new.to_csv(filename, index=False, sep=';')
-    else:
-        df_new.to_csv(filename, mode='a', header=False, index=False, sep=';')
+    try:
+        # Invia i dati al foglio Google
+        requests.post(URL_GOOGLE_SHEET, json=data)
+    except Exception as e:
+        st.error("Errore di connessione. I dati non sono stati salvati.")
 
 def load_sql_file(filepath):
     try:
@@ -197,4 +199,5 @@ if st.button("Invia Risposte", type="primary"):
         "Commenti_Aggiuntivi": commenti
     }
     save_response(response_data)
+
     st.success("La tua risposta è stata registrata con successo. Grazie per la collaborazione.")
