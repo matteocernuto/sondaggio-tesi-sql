@@ -124,16 +124,15 @@ q1 = st.radio(
 
 st.markdown("**Domanda 2: Risparmio di tempo netto**")
 q2 = st.radio(
-    "Considerando l'impalcatura generale già scritta dall'AI (struttura INSERT, sintassi, aliasing e le 6 JOIN principali azzeccate), quanto tempo pensi di risparmiare partendo da questa bozza rispetto a scrivere l'intera query da zero?",
+    "Struttura base, aliasing e le JOIN principali sono corrette. Partendo da questa bozza, quanto tempo risparmieresti rispetto a scriverla da un foglio bianco?",
     options=[
-        "Nessun risparmio (Ci metto meno a riscriverla da zero)",
-        "Risparmio marginale (Meno del 25% del tempo)",
-        "Risparmio discreto (Circa il 50% del tempo)",
-        "Alto risparmio (Tra il 50% e il 75% del tempo)",
-        "Altissimo risparmio (Più del 75% del tempo risparmiato)"
+        "Zero: faccio prima a riscriverla da capo.",
+        "Poco: mi fa risparmiare meno del 25% del tempo.",
+        "La metà: dimezza circa i tempi di sviluppo.",
+        "Molto: mi toglie il grosso del lavoro (risparmio fino al 75%).",
+        "Tantissimo: è quasi pronta, devo solo correggere il filtro (> 75%)."
     ]
 )
-
 st.divider()
 
 # ==========================================
@@ -223,6 +222,7 @@ if st.button("Invia Risposte", type="primary"):
         st.balloons() # (Opzionale, ma sempre bello da vedere a fine sondaggio!)
     else:
         st.error("⚠️ C'è stato un problema di connessione con il server. La tua risposta non è stata salvata. Riprova tra qualche istante.")
+
 
 
 
