@@ -50,7 +50,7 @@ sql_0b_gold = load_sql_file("CLEAN_sp_REA_Operazioni_ATECO_Sensibili_Paesi_Risch
 st.title("Valutazione Generazione SQL tramite AI")
 
 st.markdown("""
-Benvenuto e grazie per il tuo tempo. Questo sondaggio ha lo scopo di valutare l'output di un'architettura AI (LLM) progettata per tradurre configurazioni di business (regole Anti-Money Laundering) direttamente in Stored Procedure SQL Server.
+Benvenuto e grazie per il tuo tempo! Questo sondaggio ha lo scopo di valutare l'output di un'architettura AI (LLM) progettata per tradurre configurazioni di business (regole Anti-Money Laundering) direttamente in Stored Procedure SQL Server.
 
 L'obiettivo è generare solo la parte di logica di estrazione della procedura di calcolo per estrarre cluster, soggetti e operazioni che fanno scattare la regola.
 """)
@@ -201,4 +201,5 @@ if st.button("Invia Risposte", type="primary"):
     save_response(response_data)
 
     st.success("La tua risposta è stata registrata con successo. Grazie per la collaborazione.")
+
 
