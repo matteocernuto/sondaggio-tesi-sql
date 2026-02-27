@@ -24,9 +24,14 @@ URL_GOOGLE_SHEET = "https://script.google.com/macros/s/AKfycbxxj0IzgTt1xLj357gUr
 def save_response(data):
     try:
         # Invia i dati al foglio Google
-        requests.post(URL_GOOGLE_SHEET, json=data)
+        response = requests.post(URL_GOOGLE_SHEET, json=data)
+        # Controlla se il server ha risposto con "Success" (codice 200)
+        if response.status_code == 200:
+            return True
+        else:
+            return False
     except Exception as e:
-        st.error("Errore di connessione. I dati non sono stati salvati.")
+        return False
 
 def load_sql_file(filepath):
     try:
@@ -198,8 +203,16 @@ if st.button("Invia Risposte", type="primary"):
         "D5_Impatto_Produttivita": q5.split("]")[0].replace("[", "").strip(),
         "Commenti_Aggiuntivi": commenti
     }
-    save_response(response_data)
+    
+    # Mostriamo una rotellina di caricamento mentre contatta Google
+    with st.spinner("Salvataggio in corso..."):
+        salvataggio_ok = save_response(response_data)
+        
+    if salvataggio_ok:
+        st.success("✅ La tua risposta è stata registrata con successo. Grazie per la collaborazione.")
+        st.balloons() # (Opzionale, ma sempre bello da vedere a fine sondaggio!)
+    else:
+        st.error("⚠️ C'è stato un problema di connessione con il server. La tua risposta non è stata salvata. Riprova tra qualche istante.")
 
-    st.success("La tua risposta è stata registrata con successo. Grazie per la collaborazione.")
 
 
