@@ -114,11 +114,11 @@ st.markdown("**Domanda 1: Facilità di correzione**")
 q1 = st.radio(
     "Quanto ritieni sia semplice per uno sviluppatore SQL (conoscendo le logiche aziendali) individuare e correggere questa tipologia di errore sui parametri?",
     options=[
-        "[ 1 ] Molto difficile (L'errore è subdolo e difficile da debuggare)",
+        "[ 1 ] Molto difficile",
         "[ 2 ] Difficile",
         "[ 3 ] Neutro",
         "[ 4 ] Facile",
-        "[ 5 ] Molto facile (Basta aggiornare i valori nella clausola IN)"
+        "[ 5 ] Molto facile"
     ]
 )
 
@@ -223,6 +223,7 @@ if st.button("Invia Risposte", type="primary"):
         st.balloons() # (Opzionale, ma sempre bello da vedere a fine sondaggio!)
     else:
         st.error("⚠️ C'è stato un problema di connessione con il server. La tua risposta non è stata salvata. Riprova tra qualche istante.")
+
 
 
 
