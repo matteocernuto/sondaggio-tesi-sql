@@ -74,6 +74,16 @@ Il primo caso comprende gli errori più semplici da sistemare che riguardano pri
 Da tenere in considerazione che, anche se venissero risolti questi problemi sintattici, ci sarebbe comunque da controllare la corretta implementazione delle logiche per ottenere la query definitiva.
 """)
 
+# --- NUOVO BOX INFORMATIVO SULLE TABELLE TEMPORANEE ---
+st.info("""
+💡 **Guida alla lettura del codice generato dall'AI:**
+
+Per limitare le "allucinazioni" del modello e semplificare la struttura procedurale, all'AI è stato imposto di generare l'output utilizzando **due tabelle temporanee globali standardizzate**. 
+Per calare il codice nel nostro ambiente di produzione, tenete presente questa corrispondenza:
+* **`##TempSintesi`** corrisponde alla nostra tabella di aggregazione **`T3MFDEXC.REA_TMP`**.
+* **`##TempDettaglio`** corrisponde alle nostre tabelle di dettaglio **`T3MFDEXC.REA_OPLIST`** (per le regole transazionali/dinamiche) oppure **`T3MFDEXC.REA_SOGGLIST`** (per le regole anagrafiche/statiche).
+""")
+
 st.divider()
 
 # ==========================================
@@ -213,6 +223,7 @@ if st.button("Invia Risposte", type="primary"):
         st.balloons() # (Opzionale, ma sempre bello da vedere a fine sondaggio!)
     else:
         st.error("⚠️ C'è stato un problema di connessione con il server. La tua risposta non è stata salvata. Riprova tra qualche istante.")
+
 
 
 
